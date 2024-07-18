@@ -1,0 +1,7 @@
+Patrícia da Silva Ramos - 795410
+Pedro Morini da Mota - 795414
+
+
+docker-compose up
+
+docker-compose up --build
