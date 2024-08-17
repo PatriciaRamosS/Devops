@@ -7,16 +7,17 @@ services:
     build: ./frontend
     ports:
       - 3000:3000
+    environment:
+      REACT_APP_API_URL: http://localhost:3001/api # passar o serviço de back futuramente
 
   backend: 
     depends_on: 
       - db
     build: ./backend
-    ports: 
+    ports:
       - 3001:3001
     environment:
       DB_URL: mongodb://db/vidly
-    command: ./docker-entrypoint.sh
 
   db:
     image: mongo:4.0-xenial
