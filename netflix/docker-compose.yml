@@ -9,7 +9,6 @@ services:
       - 3000:3000
     environment:
       REACT_APP_API_URL: http://backend:3001/api
-      #REACT_APP_API_URL: http://192.168.240.1:3001/api # IP do WSL
 
   backend:
     depends_on:
@@ -19,6 +18,7 @@ services:
       - 3001:3001
     environment:
       DB_URL: mongodb://db:27017/vidly
+    command: [./docker-entrypoint.sh]
 
   db:
     image: mongo:4.0-xenial
