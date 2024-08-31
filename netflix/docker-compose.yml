@@ -8,14 +8,12 @@ services:
     ports:
       - 3000:3000
     environment:
-      REACT_APP_API_URL: http://localhost:3001/api
+      REACT_APP_API_URL: http://localhost/back
 
   backend:
     depends_on:
       - db
     build: ./backend
-    ports:
-      - 3001:3001
     environment:
       DB_URL: mongodb://db:27017/vidly
     command: [./docker-entrypoint.sh]
@@ -26,6 +24,17 @@ services:
       - 27017:27017
     volumes:
       - vidly:/data/db
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+    depends_on:
+      - frontend
+      - backend
 
 volumes:
   vidly:
