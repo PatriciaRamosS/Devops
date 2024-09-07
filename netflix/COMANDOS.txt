@@ -1,7 +1,23 @@
 Patrícia da Silva Ramos - 795410
 Pedro Morini da Mota - 795414
 
-
-docker-compose up
+cd netflix
 
 docker-compose up --build
+minikube start
+
+docker context use default
+
+minikube image load mongo:4.0-xenial
+minikube image load netflix-backend
+minikube image load netflix-frontend
+minikube image load nginx:alpine
+
+cd resources
+
+kubectl apply -f db-deployment.yaml
+kubectl apply -f backend-deployment.yaml
+kubectl apply -f frontend-deployment.yaml
+kubectl apply -f nginx-deployment.yaml
+
+kubectl port-forward svc/frontend 8080:3000

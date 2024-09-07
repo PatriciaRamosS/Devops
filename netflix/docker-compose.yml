@@ -16,7 +16,6 @@ services:
     build: ./backend
     environment:
       DB_URL: mongodb://db:27017/vidly
-    command: [./docker-entrypoint.sh]
 
   db:
     image: mongo:4.0-xenial
