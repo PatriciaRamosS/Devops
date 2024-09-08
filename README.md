@@ -11,4 +11,4 @@
     - ./build.sh
     - cd resources
     - ./deploy_e_service.sh
-    - kubectl port-forward svc/frontend 8080:3000
+    - minikube service frontend
