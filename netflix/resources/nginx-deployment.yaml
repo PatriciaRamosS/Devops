@@ -10,7 +10,7 @@ data:
 
     http {
         server {
-            listen 8080;
+            listen 80;
 
             server_name _;
 
@@ -58,10 +58,11 @@ kind: Service
 metadata:
   name: nginx
 spec:
-  type: LoadBalancer
+  type: NodePort
   ports:
     - port: 80
       targetPort: 80
       protocol: TCP
+      nodePort: 30000
   selector:
     app: nginx
