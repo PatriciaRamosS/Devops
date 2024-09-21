@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Executa o docker-compose para construir e subir os serviços
-docker-compose up --build
-
 # Inicia o Minikube
 minikube start
 
