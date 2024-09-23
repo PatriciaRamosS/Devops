@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-pv
+spec:
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    path: /exports  # Diretório exportado pelo NFS Server
+    server: nfs-server.default.svc.cluster.local # Nome DNS do NFS Server dentro do cluster
